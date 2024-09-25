@@ -14,9 +14,9 @@
 
 char	*ft_strrchr(const char *s, int c)
 {
+	char			*ans;
+	char			x;
 	unsigned int	i;
-	char	*ans;
-	char	x;
 
 	i = 0;
 	x = (char) c;
@@ -33,6 +33,6 @@ char	*ft_strrchr(const char *s, int c)
 		i++;
 	}
 	if (s[i] == x)
-		ans = (char *) &s[i]; 
+		ans = (char *) &s[i];
 	return (ans);
 }

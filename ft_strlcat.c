@@ -21,7 +21,6 @@ size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 	src_len = ft_strlen(src);
 	dst_len = ft_strlen(dst);
 	maxsize = dstsize - dst_len - 1;
-
 	if (dst_len >= dstsize)
 	{
 		dst_len = dstsize;
