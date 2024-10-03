@@ -1,30 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/20 12:03:03 by marvin            #+#    #+#             */
-/*   Updated: 2024/09/20 12:03:03 by marvin           ###   ########.fr       */
+/*   Created: 2024/10/03 11:57:27 by marvin            #+#    #+#             */
+/*   Updated: 2024/10/03 11:57:27 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memcpy(void *dst, const void *src, size_t n)
+char	*ft_strtrim(const char *s1, const char *set)
 {
-	unsigned char	*tmp_src;
-	unsigned char	*tmp_dst;
+	char	*tmp_str;
+	size_t	i;
+	size_t	j;
+	size_t	k;
 
-	if (dst == NULL && src == NULL)
-		return (dst);
-	tmp_src = (unsigned char *) src;
-	tmp_dst = (unsigned char *) dst;
-	while (n > 0)
-	{
-		*(tmp_dst++) = *(tmp_src++);
-		n--;
+	i = 0;
+	j = 0;
+	k = 0;
+	while (s1[i] != '\0')
+		while (set[j] != '\0')
+		{
+			if (set[j] == s1[i])
+				i++;
+			else
+				tmp_str[k] = s1[i];
+		}	j++;
 	}
-	return (dst);
+
+
+
+		
+
+
 }

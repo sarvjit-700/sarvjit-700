@@ -1,30 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/20 12:03:03 by marvin            #+#    #+#             */
-/*   Updated: 2024/09/20 12:03:03 by marvin           ###   ########.fr       */
+/*   Created: 2024/10/03 11:15:34 by marvin            #+#    #+#             */
+/*   Updated: 2024/10/03 11:15:34 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memcpy(void *dst, const void *src, size_t n)
+char	*ft_strjoin(const char *s1, const char *s2)
 {
-	unsigned char	*tmp_src;
-	unsigned char	*tmp_dst;
+	char	*new_str;
+	size_t	i;
+	size_t	j;
+	
+	i = ft_strlen(s1);
+	j = ft_strlen(s2);
 
-	if (dst == NULL && src == NULL)
-		return (dst);
-	tmp_src = (unsigned char *) src;
-	tmp_dst = (unsigned char *) dst;
-	while (n > 0)
-	{
-		*(tmp_dst++) = *(tmp_src++);
-		n--;
-	}
-	return (dst);
+	new_str = (char *) malloc((i + j + 1) * sizeof(char));
+	if (new_str == NULL)
+		return (NULL);
+	i = 0;
+	j = 0;
+	while (s1[i] != '\0')
+		new_str[j++] = s1[i++];
+	i = 0;
+	while (s2[i] != '\0')
+		new_str[j++] = s2[i++];
+	new_str[j] = '\0';
+	return (new_str);
 }
