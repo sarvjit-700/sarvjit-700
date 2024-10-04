@@ -11,30 +11,24 @@
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
 
 char	*ft_strtrim(const char *s1, const char *set)
 {
-	char	*tmp_str;
+	char	*new_str;
 	size_t	i;
-	size_t	j;
-	size_t	k;
+	size_t	len_str;
 
 	i = 0;
-	j = 0;
-	k = 0;
-	while (s1[i] != '\0')
-		while (set[j] != '\0')
-		{
-			if (set[j] == s1[i])
-				i++;
-			else
-				tmp_str[k] = s1[i];
-		}	j++;
-	}
-
-
-
-		
-
-
+	while (s1[i] && ft_strchr(set, s1[i]) != NULL)
+		i++;
+	len_str = ft_strlen(s1);
+	while (len_str > i && ft_strchr(set, s1[len_str - 1]) != NULL)
+		len_str--;
+	new_str = (char *)malloc(len_str - i + 1 * sizeof(char));
+	if (new_str == NULL)
+		return (NULL);
+	ft_strlcpy(new_str, &s1[i], len_str - i + 1);
+	new_str[len_str - i] = '\0';
+	return (new_str);
 }

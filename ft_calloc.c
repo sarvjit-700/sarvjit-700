@@ -15,8 +15,8 @@
 void	*ft_calloc(size_t count, size_t size)
 {
 	unsigned char	*tmp;
-	size_t	i;
-	size_t	max_size;
+	size_t			i;
+	size_t			max_size;
 
 	max_size = (size_t) - 1;
 	if (count != 0 && size > max_size / count)
