@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 14:39:54 by ssukhija          #+#    #+#             */
-/*   Updated: 2024/09/27 12:02:34 by marvin           ###   ########.fr       */
+/*   Updated: 2024/10/06 09:53:13 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,36 +14,23 @@
 
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
-	char	*ans;
 	size_t	i;
 	size_t	j;
 
-
 	i = 0;
-	j = 0;
-	ans = NULL;
 	if (needle[0] == 0)
-		return ((char *)haystack);
-	while (i < len && (needle[j] != '\0' || haystack[i] != '\0'))
+		return ((char *) &haystack[i]);
+	if (haystack[i] == '\0')
+		return (NULL);
+	while (i < len && haystack[i] != '\0')
 	{
-		if (needle[j] == haystack[i])
-		{
-			ans = ((char *) &haystack[i]);
-			while (needle[j] == haystack[i])
-			{
-				j++;
-				i++;
-			}
-			i--;
-		}
-		if (i < len && (needle[j] != '\0' || haystack[i] != '\0'))
-			return (ans);
-		else
-		{
-		i++;
 		j = 0;
-		ans = NULL;
-		}
+		while (((i + j) < len) && (needle[j] != '\0')
+			&& (haystack[i + j] == needle[j]))
+			j++;
+		if (needle[j] == '\0')
+			return ((char *) &haystack[i]);
+		i++;
 	}
-	return (ans);
+	return (NULL);
 }

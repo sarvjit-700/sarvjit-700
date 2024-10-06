@@ -1,39 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/03 09:02:47 by marvin            #+#    #+#             */
-/*   Updated: 2024/10/03 09:02:47 by marvin           ###   ########.fr       */
+/*   Created: 2024/10/05 14:14:20 by marvin            #+#    #+#             */
+/*   Updated: 2024/10/05 14:14:20 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_substr(const char *s, unsigned int start, size_t len)
+void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 {
-	char	*tmp_str;
-	size_t	s_len;
-	size_t	i;
+	unsigned int	i;
 
-	if (s == NULL)
-		return (NULL);
-	s_len = ft_strlen(s);
-	if (start > s_len)
-		return (ft_strdup(""));
-	if (len > (s_len - start))
-		len = s_len - start;
-	tmp_str = malloc((len + 1) * sizeof(char));
-	if (tmp_str == NULL)
-		return (NULL);
 	i = 0;
-	while (i < len)
+	while (s[i] != '\0')
 	{
-		tmp_str[i] = s[start + i];
+		(*f)(i, &s[i]);
 		i++;
 	}
-	tmp_str[i] = 0;
-	return (tmp_str);
 }
